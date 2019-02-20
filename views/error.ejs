@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+</head>
+
+<body>
+    <table class="table table-condensed table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>CompanyName </th>
+                <th>LatestPrice </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <% for(var i=0; i < companies.length; i++) { %>
+            <tr>
+                <td>
+                    <%= companies[i].companyName %>
+                </td>
+                <td>
+                    <%= companies[i].latestPrice %>
+                </td>
+            </tr>
+            <% } %>
+            <% if (pages > 0) { %>
+            <tr class="pagination text-center">
+                <% if (current == 1) { %>
+                <td class="disabled"><a>First</a></td>
+                <% } else { %>
+                <td><a href="/table/1">First</a></td>
+                <% } %>
+                <% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %>
+                <% if (i !== 1) { %>
+                <td class="disabled"><a>...</a></td>
+                <% } %>
+                <% for (; i <= (Number(current) + 4) && i <= pages; i++) { %>
+                <% if (i == current) { %>
+                <td class="active"><a><%= i %></a></td>
+                <% } else { %>
+                <td><a href="/table/<%= i %>"><%= i %></a></td>
+                <% } %>
+                <% if (i == Number(current) + 4 && i < pages) { %>
+                <td class="disabled"><a>...</a></td>
+                <% } %>
+                <% } %>
+                <% if (current == pages) { %>
+                <td class="disabled"><a>Last</a></td>
+                <% } else { %>
+                <td><a href="/table/<%= pages %>">Last</a></td>
+                <% } %>
+            </tr>
+            <% } %>
+
+
+        </tbody>
+    </table>
+</body>
+
+</html>
