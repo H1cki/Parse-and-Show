@@ -7,7 +7,6 @@ var mongoose = require("mongoose");
 var indexRouter = require('./routes/index');
 var { Parse } = require("./routes/parse");
 var { showTable } = require("./routes/show");
-var table = require('./routes/table');
 mongoose.connect('mongodb://localhost:27017/Companydb', function (err) {
 
   if (err) throw err;
